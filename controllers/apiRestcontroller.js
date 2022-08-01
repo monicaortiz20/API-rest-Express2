@@ -1,23 +1,16 @@
-const fetch = require('node-fetch');
+const funcFetch = require('../utils/apiFetch');
+
 
 const getFilms = async (req, res) => {
-    const apikey = "dc142a52";
     if (req.params.title) {
         try {
-            let response = await fetch(`https://www.omdbapi.com/?t=${req.params.title}&apikey=${apikey}`);
-            let films = await response.json();
-            // console.log(films)
-            res.render('film', { 'film':films }); // obtenemos un objeto
-        }
-        catch (error) {
-            console.log(`ERROR: ${error.stack}`);
-            res.status(404).render('film.pug', { "film": {} }); //coherencia! si hay error que nos devuelva un objeto vacío
+            const films = await funcFetch(req.params.title)
+            res.status(200).json(films);
+        }catch (error) {
+                console.log(`ERROR: ${error.stack}`);
+                res.status(404).json({"message":"pelicula no encontrada"});
+            }
         }
     }
-}
 
-
-
-module.exports = {
-    getFilms,
-    }
+    module.exports = {getFilms};

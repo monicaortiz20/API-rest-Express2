@@ -10,11 +10,10 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 
 
-app.use('/',filmRoutes); 
+app.use('/api/film',filmRoutes); 
 // app.use('/film',filmRoutes);           
 
 
 app.listen(port, () => {
-    console.log(`Mi servidor funciona en http://localhost/:$%7Bport%7D%60`);
+    console.log(`Mi servidor funciona en http://localhost/:${port}`);
   })
-
