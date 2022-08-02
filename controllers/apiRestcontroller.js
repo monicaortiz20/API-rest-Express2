@@ -1,6 +1,5 @@
 const funcFetch = require('../utils/apiFetch');
 
-
 const getFilms = async (req, res) => {
     if (req.params.title) {
         try {

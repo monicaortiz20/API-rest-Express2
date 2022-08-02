@@ -15,6 +15,5 @@ app.use('/api/film',filmRoutes);
 
 
 app.listen(port, () => {
-    console.log(`Mi servidor funciona en http://localhost/:${port}`);
+    console.log(`Mi servidor funciona en http://localhost:${port}`);
   })
-  
